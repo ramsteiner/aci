@@ -1,0 +1,8 @@
+- name: Query all tenants
+  cisco.aci.aci_tenant:
+    host: sandboxapicdc.cisco.com
+    username: admin
+    password: ciscopsdt
+    state: query
+  delegate_to: localhost
+  register: query_result
