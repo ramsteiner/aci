@@ -1,15 +1,15 @@
 ---
--name test
- hosts: localhost
- gather-facts: false
- connection: local
+- name: test
+  hosts: localhost
+  gather-facts: false
+  connection: local
  
- tasks:
-  - name: Query all tenants
-    cisco.aci.aci_tenant:
-    host: sandboxapicdc.cisco.com
-    username: admin
-    password: ciscopsdt
-    state: query
-    delegate_to: localhost
-    register: query_result
+  tasks:
+   - name: Query all tenants
+     cisco.aci.aci_tenant:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       state: query
+     delegate_to: localhost
+     register: query_result
