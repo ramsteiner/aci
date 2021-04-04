@@ -15,5 +15,9 @@
        output_level: debug
      delegate_to: localhost
      register: query_result
+    
+   - name: Print returned json dictionary
+      debug:
+        var: query_result.json
 #   - debug:
 #       msg: "{{results}}"
