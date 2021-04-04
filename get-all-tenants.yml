@@ -12,7 +12,8 @@
        password: ciscopsdt
        state: query
        validate_certs: false
+       output_level: debug
      delegate_to: localhost
      register: query_result
-   - debug:
-       msg: "{{results}}"
+#   - debug:
+#       msg: "{{results}}"
