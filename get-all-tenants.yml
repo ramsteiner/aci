@@ -16,7 +16,7 @@
      delegate_to: localhost
      register: query_result
    - debug:
-     var: query_result
+     var: current
      verbosity: 2
 
 #   - debug:
