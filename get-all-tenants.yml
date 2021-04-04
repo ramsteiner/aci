@@ -15,4 +15,4 @@
      delegate_to: localhost
      register: query_result
    - debug:
-       msg: "{{current}}"
+       msg: "{{register}}"
