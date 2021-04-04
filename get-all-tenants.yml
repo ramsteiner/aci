@@ -15,9 +15,6 @@
        output_level: debug
      delegate_to: localhost
      register: query_result
-   - debug:
-     var: current
-     verbosity: 2
-
-#   - debug:
-#       msg: "{{results}}"
+   - name: Print version
+     debug:
+       msg: "Ansible Version: {{ query_result.current }}"
