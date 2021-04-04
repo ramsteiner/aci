@@ -18,6 +18,6 @@
     
    - name: Print returned json dictionary
       debug:
-        var: query_result.json
+        var: query_result
 #   - debug:
 #       msg: "{{results}}"
