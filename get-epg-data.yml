@@ -1,12 +1,21 @@
+---
+- name: get-epg-data
+  hosts: localhost
+  gather_facts: false
+ 
+  tasks:
+   - name: Query EPG
+     cisco.aci.aci_epg:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       epg: web_epg
+       state: query
+       validate_certs: false
+     delegate_to: localhost
+     register: query_result
+     
+   - name: Print version
+     debug:
+       msg: "Tenants: {{ query_result.current }}"
 
-
-- name: Query all EPGs with a Specific Name
-  cisco.aci.aci_epg:
-    host: apic
-    username: admin
-    password: SomeSecretPassword
-    validate_certs: no
-    epg: web_epg
-    state: query
-  delegate_to: localhost
-  register: query_result
