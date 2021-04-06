@@ -11,22 +11,23 @@
        password: ciscopsdt
        validate_certs: false
        tenant: ATEST
-       ap: ATEST
-       epg: "VLAN_{{ item }}"
+       ap: "{{ item.ap }}"
+       epg: "VLAN_{{ item.id }}"
        description: TEST-EPG
-       bd: ATEST
+       bd: "{{ item.ap }}"
        monitoring_policy: default
        preferred_group: yes
        state: present
      delegate_to: localhost
      loop:
-       - 110
-       - 120
-       - 130
-       - 140
-       - 150
-       - 160
-       - 170
-       - 180
-       - 190
-       - 200
+       - {id: '110', ap: 'ATEST'}
+       - {id: '120', ap: 'ATEST'}
+       - {id: '130', ap: 'ATEST'}
+       - {id: '140', ap: 'ATEST'}
+       - {id: '150', ap: 'ATEST'}
+       - {id: '160', ap: 'ATEST'}
+       - {id: '170', ap: 'ATEST'}
+       - {id: '180', ap: 'ATEST'}
+       - {id: '190', ap: 'ATEST'}
+       - {id: '200', ap: 'ATEST'}
+       - {id: '210', ap: 'ATEST2'}
