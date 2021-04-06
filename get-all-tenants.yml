@@ -17,4 +17,4 @@
      register: query_result
    - name: Print version
      debug:
-       msg: "Ansible Version: {{ query_result.current }}"
+       msg: "Tenants: {{ query_result.current }}"
