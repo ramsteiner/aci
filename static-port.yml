@@ -1,32 +1,35 @@
 ---
-- name: add-EPG
+- name: Add a static port to EPGs
   hosts: localhost
   gather_facts: false
  
   tasks:
-   - name: Add a new EPG
-     cisco.aci.aci_epg:
+   - name: Add a static port to EPGs
+     cisco.aci.aci_static_binding_to_epg:
        host: sandboxapicdc.cisco.com
        username: admin
        password: ciscopsdt
        validate_certs: false
-       tenant: ATEST
        ap: ATEST
-       epg: "{{ item }}"
-       description: TEST-EPG
-       bd: ATEST
-       monitoring_policy: default
-       preferred_group: yes
+       tenant: ATEST
+       epg: "VLAN_{{ item }}"
+       encap_id: "{{ item }}"
+       deploy_immediacy: lazy
+       interface_mode: trunk
+       interface_type: switch_port
+       pod_id: 1
+       leafs: 102
+       interface: '1/7'
        state: present
      delegate_to: localhost
      loop:
-       - VLAN_110
-       - VLAN_120
-       - VLAN_130
-       - VLAN_140
-       - VLAN_150
-       - VLAN_160
-       - VLAN_170
-       - VLAN_180
-       - VLAN_190
-       - VLAN_200
+       - 110
+       - 120
+       - 130
+       - 140
+       - 150
+       - 160
+       - 170
+       - 180
+       - 190
+       - 200
