@@ -18,5 +18,5 @@
    - name: Print version
      debug:
        msg: "Tenants: {{ query_result.current }}"
-       vars: query_result
+       var: query_result
 
