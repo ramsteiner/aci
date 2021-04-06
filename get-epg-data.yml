@@ -1,0 +1,12 @@
+
+
+- name: Query all EPGs with a Specific Name
+  cisco.aci.aci_epg:
+    host: apic
+    username: admin
+    password: SomeSecretPassword
+    validate_certs: no
+    epg: web_epg
+    state: query
+  delegate_to: localhost
+  register: query_result
