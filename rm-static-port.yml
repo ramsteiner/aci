@@ -20,7 +20,7 @@
        pod_id: 1
        leafs: 102
        interface: '1/7'
-       state: present
+       state: absent
      delegate_to: localhost
      loop:
        - {id: '110', ap: 'ATEST'}
