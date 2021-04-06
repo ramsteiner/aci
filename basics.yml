@@ -1,0 +1,66 @@
+---
+- name: add-basics
+  hosts: localhost
+  gather_facts: false
+ 
+  tasks:
+   - name: Add a new tenant
+     cisco.aci.aci_tenant:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       validate_certs: false
+       tenant: ATEST
+       description: ATEST tenant
+       state: present
+     delegate_to: localhost
+  
+   - name: Add a new VRF to a tenant
+     cisco.aci.aci_vrf:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       validate_certs: false
+       vrf: ATEST
+       tenant: ATEST
+       descr: ATEST VRF
+       policy_control_preference: enforced
+       policy_control_direction: ingress
+       state: present
+     delegate_to: localhost
+  
+   - name: Add Bridge Domain
+     cisco.aci.aci_bd:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       validate_certs: false
+       tenant: ATEST
+       bd: ATEST
+       vrf: ATEST
+       state: present
+     delegate_to: localhost
+  
+   - name: Add Bridge Domain
+     cisco.aci.aci_bd:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       validate_certs: false
+       tenant: ATEST
+       bd: ATEST2
+       vrf: ATEST
+       state: present
+     delegate_to: localhost
+     
+   - name: Add a new AP
+     cisco.aci.aci_ap:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       validate_certs: false
+       tenant: ATEST
+       ap: ATEST
+       description: ATEST
+       state: present
+     delegate_to: localhost
