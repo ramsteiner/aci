@@ -12,7 +12,7 @@
        validate_certs: false
        tenant: ATEST
        ap: ATEST
-       epg: {{ item }}
+       epg: "{{ item }}"
        description: TEST-EPG
        bd: ATEST
        monitoring_policy: default
@@ -20,8 +20,8 @@
        state: present
      delegate_to: localhost
      loop:
-     - VLAN_110
-     - VLAN_120
-     - VLAN_130
-     - VLAN_140
-     - VLAN_150
+       - VLAN_110
+       - VLAN_120
+       - VLAN_130
+       - VLAN_140
+       - VLAN_150
