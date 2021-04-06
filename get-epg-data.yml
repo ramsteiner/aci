@@ -9,7 +9,7 @@
        host: sandboxapicdc.cisco.com
        username: admin
        password: ciscopsdt
-       epg: web_epg
+       epg: VLAN_120
        state: query
        validate_certs: false
      delegate_to: localhost
