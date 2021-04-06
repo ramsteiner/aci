@@ -10,10 +10,10 @@
        username: admin
        password: ciscopsdt
        validate_certs: false
-       ap: ATEST
+       ap: "{{ item.ap }}"
        tenant: ATEST
-       epg: "VLAN_{{ item }}"
-       encap_id: "{{ item }}"
+       epg: "VLAN_{{ item.id }}"
+       encap_id: "{{ item.id }}"
        deploy_immediacy: lazy
        interface_mode: trunk
        interface_type: switch_port
@@ -23,13 +23,14 @@
        state: present
      delegate_to: localhost
      loop:
-       - 110
-       - 120
-       - 130
-       - 140
-       - 150
-       - 160
-       - 170
-       - 180
-       - 190
-       - 200
+       - {id: '110', ap: 'ATEST'}
+       - {id: '120', ap: 'ATEST'}
+       - {id: '130', ap: 'ATEST'}
+       - {id: '140', ap: 'ATEST'}
+       - {id: '150', ap: 'ATEST'}
+       - {id: '160', ap: 'ATEST'}
+       - {id: '170', ap: 'ATEST'}
+       - {id: '180', ap: 'ATEST'}
+       - {id: '190', ap: 'ATEST'}
+       - {id: '200', ap: 'ATEST'}
+       - {id: '210', ap: 'ATEST2'}
