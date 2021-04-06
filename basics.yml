@@ -64,3 +64,15 @@
        description: ATEST
        state: present
      delegate_to: localhost
+
+   - name: Add a new AP
+     cisco.aci.aci_ap:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       validate_certs: false
+       tenant: ATEST
+       ap: ATEST2
+       description: ATEST2
+       state: present
+     delegate_to: localhost
