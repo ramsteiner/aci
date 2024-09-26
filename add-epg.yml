@@ -1,0 +1,35 @@
+---
+- name: add-EPG
+  hosts: localhost
+  gather_facts: false
+ 
+  tasks:
+   - name: Add a new EPG
+     cisco.aci.aci_epg:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       validate_certs: false
+       tenant: ATEST
+       ap: "{{ item.ap }}"
+       epg: "VLAN_{{ item.id }}"
+       description: TEST-EPG
+       bd: "{{ item.ap }}"
+       monitoring_policy: default
+       preferred_group: yes
+       state: present
+     delegate_to: localhost
+     loop:
+       - {id: '110', ap: 'ATEST'}
+       - {id: '120', ap: 'ATEST'}
+       - {id: '130', ap: 'ATEST'}
+       - {id: '140', ap: 'ATEST'}
+       - {id: '150', ap: 'ATEST'}
+       - {id: '160', ap: 'ATEST'}
+       - {id: '170', ap: 'ATEST'}
+       - {id: '180', ap: 'ATEST'}
+       - {id: '190', ap: 'ATEST'}
+       - {id: '200', ap: 'ATEST'}
+       - {id: '210', ap: 'ATEST2'}
+       - {id: '220', ap: 'ATEST2'}
+       - {id: '230', ap: 'ATEST2'}

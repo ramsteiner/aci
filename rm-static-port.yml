@@ -1,0 +1,38 @@
+---
+- name: Add a static port to EPGs
+  hosts: localhost
+  gather_facts: false
+ 
+  tasks:
+   - name: Add a static port to EPGs
+     cisco.aci.aci_static_binding_to_epg:
+       host: sandboxapicdc.cisco.com
+       username: admin
+       password: ciscopsdt
+       validate_certs: false
+       ap: "{{ item.ap }}"
+       tenant: ATEST
+       epg: "VLAN_{{ item.id }}"
+       encap_id: "{{ item.id }}"
+       deploy_immediacy: lazy
+       interface_mode: trunk
+       interface_type: switch_port
+       pod_id: 1
+       leafs: 102
+       interface: '1/7'
+       state: absent
+     delegate_to: localhost
+     loop:
+       - {id: '110', ap: 'ATEST'}
+       - {id: '120', ap: 'ATEST'}
+       - {id: '130', ap: 'ATEST'}
+       - {id: '140', ap: 'ATEST'}
+       - {id: '150', ap: 'ATEST'}
+       - {id: '160', ap: 'ATEST'}
+       - {id: '170', ap: 'ATEST'}
+       - {id: '180', ap: 'ATEST'}
+       - {id: '190', ap: 'ATEST'}
+       - {id: '200', ap: 'ATEST'}
+       - {id: '210', ap: 'ATEST2'}
+       - {id: '220', ap: 'ATEST2'}
+       - {id: '230', ap: 'ATEST2'}

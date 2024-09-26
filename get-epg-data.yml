@@ -1,20 +1,22 @@
 ---
-- name: test
-  hosts: all
+- name: get-epg-data
+  hosts: localhost
   gather_facts: false
-  connection: local
  
   tasks:
-   - name: Query all tenants
-     cisco.aci.aci_tenant:
+   - name: Query EPG
+     cisco.aci.aci_epg:
        host: sandboxapicdc.cisco.com
        username: admin
        password: ciscopsdt
+       epg: VLAN_120
        state: query
        validate_certs: false
-       output_level: debug
      delegate_to: localhost
      register: query_result
+     
    - name: Print version
      debug:
-       msg: "Tenants: {{ query_result.current }}"
+       #msg: "Tenants: {{ query_result.current }}"
+       var: query_result
+
